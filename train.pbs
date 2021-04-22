@@ -30,4 +30,4 @@ export MASTER_ADDR=$(head -n 1 $PBS_NODEFILE)
 export MASTER_PORT=12345
 
 
-mpirun -n 4 python train_mnist.py
+mpirun -n 8 python train_mnist.py
