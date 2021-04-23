@@ -141,7 +141,7 @@ def train(num_epochs=30, batch_size=128, learning_rate=0.05):
         #y_pred = np.asarray(y_pred)
         # compute accuracy per epoch
         #y_pred = np.argmax(y_pred, axis=1)
-        ep_acc = corr / total
+        ep_acc = corr / float(total)
 
         if rank == 0:
             #epbar.set_postfix(loss=ep_loss)
