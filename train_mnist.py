@@ -93,6 +93,7 @@ def train(num_epochs=30, batch_size=128, learning_rate=0.05):
 
     # loop for some epochs
     iter_losses = []
+    #eps = []
     epoch_losses = []
     epoch_accs = []
     elapsed_times = []
@@ -147,12 +148,13 @@ def train(num_epochs=30, batch_size=128, learning_rate=0.05):
             #epbar.set_postfix(loss=ep_loss)
             print("epoch",ep,"iter",num_iters, "loss",ep_loss, "accuracy",ep_acc,"elapsed time (s)" ,perf_counter() - start)
         
+        #eps.append(ep)
         epoch_losses.append(ep_loss)
         epoch_accs.append(ep_acc)
         elapsed_times.append(perf_counter()  - start)
         
         metrics = pd.DataFrame({'epoch_losses': epoch_losses, 'epoch_accs': epoch_accs,'elapsed_time': elapsed_times})
-        metrics.to_csv(f'metrics{MPI.COMM_WORLD.Get_size()}.csv')
+        metrics.to_csv(f'metrics{world_size}.csv')
 
     return iter_losses, epoch_losses
 

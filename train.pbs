@@ -5,7 +5,7 @@
 #PBS -A ACF-UTK0150
 #PBS -o logs/$PBS_JOBNAME.$PBS_JOBID.o
 #PBS -e logs/$PBS_JOBNAME.$PBS_JOBID.e
-#PBS -l nodes=1:ppn=4
+#PBS -l nodes=1:ppn=10
 #PBS -l walltime=00:10:00
 #PBS -l qos=condo
 
@@ -30,4 +30,4 @@ export MASTER_ADDR=$(head -n 1 $PBS_NODEFILE)
 export MASTER_PORT=12345
 
 
-mpirun -n $PBS_NP python train_mnist.py
+mpirun -n 8 python train_mnist.py
