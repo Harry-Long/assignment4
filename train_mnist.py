@@ -149,12 +149,12 @@ def train(num_epochs=30, batch_size=128, learning_rate=0.05):
             print("epoch",ep,"iter",num_iters, "loss",ep_loss, "accuracy",ep_acc,"elapsed time (s)" ,perf_counter() - start)
         
         #eps.append(ep)
-        epoch_losses.append(ep_loss)
-        epoch_accs.append(ep_acc)
-        elapsed_times.append(perf_counter()  - start)
+            epoch_losses.append(ep_loss)
+            epoch_accs.append(ep_acc)
+            elapsed_times.append(perf_counter()  - start)
         
-        metrics = pd.DataFrame({'epoch_losses': epoch_losses, 'epoch_accs': epoch_accs,'elapsed_time': elapsed_times})
-        metrics.to_csv(f'metrics{world_size}.csv')
+            metrics = pd.DataFrame({'epoch_losses': epoch_losses, 'epoch_accs': epoch_accs,'elapsed_time': elapsed_times})
+            metrics.to_csv(f'metrics{world_size}.csv')
 
     return iter_losses, epoch_losses
 
